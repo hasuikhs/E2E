@@ -1,11 +1,12 @@
-/* eslint-disable testing-library/no-node-access */
 /* eslint-disable testing-library/no-container */
+/* eslint-disable testing-library/no-node-access */
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
 describe('<App />', () => {
   it('renders component correctly', () => {
     const { container } = render(<App />);
+
     const linkElement = screen.getByText(/learn react/i);
     expect(linkElement).toBeInTheDocument();
 
@@ -13,7 +14,7 @@ describe('<App />', () => {
     expect(container.getElementsByClassName('App-logo')[0]).toHaveAttribute('src', 'logo.svg');
 
     expect(container.getElementsByTagName('p')).toHaveLength(1);
-    expect(container.getElementsByTagName('p')[0]).toHaveTextContent('Edit src/App.js and save to reload.');
+    expect(container.getElementsByTagName('p')[0]).toHaveTextContent('Edit src/App.tsx and save to reload');
 
     expect(container).toMatchSnapshot();
   });
