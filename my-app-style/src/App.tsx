@@ -1,5 +1,4 @@
-import Styled from 'styled-components';
-import './App.css';
+import Styled, { keyframes } from 'styled-components';
 import logo from './logo.svg';
 
 const Container = Styled.div`
@@ -17,22 +16,26 @@ const Header = Styled.header`
   color: white;
 `;
 
+const spin = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
 const AppLogo = Styled.img`
   height: 40vmin;
   pointer-events: none;
 
   @media (prefers-reduced-motion: no-preference) {
-    animation: App-logo-spin infinite 20s linear;
+    animation: ${ spin } infinite 20s linear;
   }
+`;
 
-  @keyframes App-logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
+const AppLink = Styled.a`
+  color: #61dafb;
 `;
 
 function App() {
@@ -43,14 +46,14 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <a
+        <AppLink
           className="App-link"
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
         >
           Learn React
-        </a>
+        </AppLink>
       </Header>
     </Container>
   );
