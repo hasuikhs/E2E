@@ -34,6 +34,9 @@ export default defineConfig({
     trace: 'on-first-retry',
     video: 'on-first-retry',
     viewport: { width: 1280, height: 720 },
+    contextOptions: {
+      ignoreHTTPSErrors: true
+    },
   },
 
   /* Configure projects for major browsers */
