@@ -12,9 +12,23 @@ $ npm init playwright@latest
 $ yarn create playwright
 ```
 
-## 2. 테스트
 
-### 2.1 로그인 유지
+## 2. codegen
+
+- 작업을 기록하여 테스트를 생성해줌
+- 테스트를 사용자가 직접 제작하는 것이 아니라 해당 작업들을 코드로 변환해서 기록해줌
+- 일반적인 화면에서는 모두 가능하지만, 네트워크 상황을 기다리거나 하는 등의 작업이 필요한 경우 직접 해당 부분을 제어해줘야 함
+
+```bash
+$ npx playwright codegen
+
+# 대상 url 주소를 명시하여 시작 가능
+$ npx playwright codegen localhost:3000
+```
+
+## 3. 테스트
+
+### 3.1 로그인 유지
 
 - 해당 작업을 하고나면 테스트 전에 로그인을 미리 해두어 각 테스트에 로그인이 필요하지 않음
 
@@ -53,7 +67,7 @@ $ yarn create playwright
   export default globalSetup;
   ```
 
-### 2.2 선택자
+### 3.2 선택자
 - 선택자를 이용하여 요소를 선택하면, 다양한 상호작용이 가능한 함수를 사용 가능
   - `click()`, `type()`, `fill()`, `press()`, `check()`, `selectOption()`, `hover()` 등
 #### 2.2.1 locator
