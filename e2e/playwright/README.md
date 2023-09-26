@@ -26,6 +26,12 @@ $ npx playwright codegen
 $ npx playwright codegen localhost:3000
 ```
 
+- codegen을 이용하면 아래와 같은 화면 팝업
+  ![codegen](../../asset/codegen_1.JPG)
+
+- 화면에서 작업을 하면, 아래 작은 화면에서 해당 작업을 코드로 변환
+  - 단, 위에서 언급했다시피 SPA 기반 서비스나 화면의 일부만 바뀌는 등의 작업은 제어 필요
+
 ## 3. 테스트
 
 ### 3.1 로그인 유지
@@ -91,4 +97,26 @@ $ npx playwright codegen localhost:3000
   - 요소 내에서 하위 요소 중 여러 개의 요소 모두 찾기
   ```javascript
   const buttons = await element.locatorAll('button');
+  ```
+
+### 3.3 dialog
+
+- `alert()`, `confirm()`, `prompt()` 등의 dialog에서도 사용 가능
+- 이벤트에 대한 리스너를 미리 등록
+- 단, 화면에 여러 이벤트가 존재한다면 message에 따라서 분기가 필요해 보임
+
+  ```javascript
+  page.on('dialog', async dialog => {
+    const message = dialog.message();
+
+    if (message === '...')  {
+      // 경고창
+      await dialog.dismiss();
+    } else if (...) {
+      // 확인창
+      await dialog.accept();
+    }
+  });
+
+  await page.getByRole('button', { name: '확인' }).click();
   ```

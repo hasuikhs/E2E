@@ -6,7 +6,8 @@
   "scripts": {
     "test": "npx playwright test",
     "test:ui": "npx playwright test --ui",
-    "report": "npx playwright show-report"
+    "report": "npx playwright show-report",
+    "codegen": "npx playwright codegen http://127.0.0.1:5500/e2e/sample.html"
   },
   "keywords": [],
   "author": "",

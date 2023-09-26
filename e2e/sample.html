@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAMPLE PAGE</title>
+  <style>
+    button {
+      width: 100px;
+      height: 30px;
+    }
+  </style>
+</head>
+<body>
+  <button id="test-alert" type="button">
+    경고
+  </button>
+
+  <button id="test-confirm" type="button">
+    확인
+  </button>
+
+  <div id="pannel">
+    
+  </div>
+
+  <script>
+    window.onload = () => {
+      const panel = document.querySelector('#pannel');
+
+      const alertButton = document.querySelector('#test-alert');
+
+      alertButton.addEventListener('click', e => {
+        alert('이것은 경고! \n줄바꿈까지!');
+      });
+
+      const confirmButton = document.querySelector('#test-confirm');
+
+      confirmButton.addEventListener('click', e => {
+        if (!confirm('확인이 필요!')) {
+          //취소
+          panel.innerText = '취소';
+        } else {
+          // 확인
+          panel.innerText = '확인'
+        }
+      });
+    }
+  </script>
+</body>
+</html>
