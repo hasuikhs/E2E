@@ -120,3 +120,37 @@ $ npx playwright codegen localhost:3000
 
   await page.getByRole('button', { name: '확인' }).click();
   ```
+
+### 3.4 style
+
+- 특정 요소에 CSS가 포함되어 있는지를 검사
+- 단, 색상의 경우 16진수 표기법이 아닌 rgb 표기법으로만 가능
+
+```javascript
+expect(page.locator('css selector')).toHaveCSS('background-color', 'rgb(112, 173, 71)');
+```
+
+### 3.5 response
+
+- 특정 요청을 보낸 후 특정 응답이나 값, 상태 등을 확인
+
+```javascript
+// 기본
+await page.waitForResponse(res => (
+  res.url().includes('요청 URL')
+  && res.status() === 200
+), {
+  timeout: 10 * 1000 // 해당 응답의 응답 시간도 기다릴 수 있음 기본값은 30000
+});
+
+// 특정 응답값을 함께 검사
+await page.waitForResponse(res => {
+  const result = await res.json();
+
+  return (
+    res.url().includes('요청 URL')
+    && res.status() === 200
+    && result.status === 'DONE'
+  );
+})
+```
