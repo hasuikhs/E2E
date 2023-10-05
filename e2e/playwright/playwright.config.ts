@@ -14,6 +14,12 @@ export default defineConfig({
   globalTeardown: require.resolve('./global-setup'),
 
   testDir: './tests',
+  testMatch: '*.spec.ts', // 테스트 파일과 일치하는 패턴 또는 정규식 기본적으로 .*(test|spec).(js|ts|mjs) 파일 실행
+  testIgnore: '*test-assets', // 테스트 파일을 찾을때 무시해야 하는 패턴 또는 정규식
+  // timeout, // 타임아웃 기본값은 30_000ms
+  // expect: {
+  //   timeout, // expect에 대한 타임아웃 기본값은 5_000ms
+  // },
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
