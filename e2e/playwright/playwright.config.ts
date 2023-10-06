@@ -1,14 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
-// require('dotenv').config();
+require('dotenv').config();
 
-/**
- * See https://playwright.dev/docs/test-configuration.
- */
 export default defineConfig({
   globalSetup: require.resolve('./global-setup'),
   globalTeardown: require.resolve('./global-setup'),
@@ -20,25 +13,18 @@ export default defineConfig({
   // expect: {
   //   timeout, // expect에 대한 타임아웃 기본값은 5_000ms
   // },
-  /* Run tests in files in parallel */
   fullyParallel: true,
-  /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
-  /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
-  /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
-  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     ['list'],
     ['html']
   ],
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
 
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     screenshot: 'only-on-failure',
     trace: 'on-first-retry',
     video: 'on-first-retry',
@@ -49,7 +35,6 @@ export default defineConfig({
     storageState: './.auth.json' // 로그인 정보를 담아두는 파일
   },
 
-  /* Configure projects for major browsers */
   projects: [
     // {
     //   name: 'chromium',
@@ -76,7 +61,6 @@ export default defineConfig({
     //   use: { ...devices['iPhone 12'] },
     // },
 
-    /* Test against branded browsers. */
     {
       name: 'Microsoft Edge',
       use: { ...devices['Desktop Edge'], channel: 'msedge' },
