@@ -74,6 +74,8 @@ $ npx playwright codegen localhost:3000
   export default globalSetup;
   ```
 
+  - 여러 아이디 로그인 방법 ...
+
 ### 3.2 선택자
 - 선택자를 이용하여 요소를 선택하면, 다양한 상호작용이 가능한 함수를 사용 가능
   - `click()`, `type()`, `fill()`, `press()`, `check()`, `selectOption()`, `hover()` 등
