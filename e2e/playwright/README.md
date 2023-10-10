@@ -77,7 +77,7 @@ $ npx playwright codegen localhost:3000
   - 여러 아이디 로그인 방법
     - 위에 먼저 기술한 `gloabl-setup`의 경우에는 전역 설정 파일을 사용하게 되어 프로젝트 전체에 영향을 미침
     - 하지만, 아래와 같이 설정하면 추가적인 아이디나 패스워드를 이용한 테스트를 진행 가능
-    - `globalSetup`에서 사용하고 set한 state는 사용하지 않고 개발 테스트에서 use를 통해 state를 따로 set해서 사용하는 것이므로, `globalSetup`에서 만든 파일을 덮어쓰기 하는 것
+    - `globalSetup`에서 사용하고 set한 state는 사용하지 않고 개발 테스트에서 use를 통해 state를 따로 set해서 사용하는 것이므로, `globalSetup`에서 만든 파일 대신 사용
       ```javascript
       // playwright.config.ts
       export default defineConfig({

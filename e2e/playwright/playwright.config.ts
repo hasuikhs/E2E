@@ -3,8 +3,8 @@ import { defineConfig, devices } from '@playwright/test';
 require('dotenv').config();
 
 export default defineConfig({
-  globalSetup: require.resolve('./global-setup'),
-  globalTeardown: require.resolve('./global-setup'),
+  globalSetup: require.resolve('./global-setup'), // 모든 테스트 진행 전에 한번만 실행
+  // globalTeardown: require.resolve('./global-setup'), // 모든 테스트 진행 후에 한번만 실행됨
 
   testDir: './tests',
   testMatch: '*.spec.ts', // 테스트 파일과 일치하는 패턴 또는 정규식 기본적으로 .*(test|spec).(js|ts|mjs) 파일 실행
@@ -32,7 +32,7 @@ export default defineConfig({
     contextOptions: {
       ignoreHTTPSErrors: true
     },
-    storageState: './.auth.json' // 로그인 정보를 담아두는 파일
+    storageState: './.global-auth.json' // 로그인 정보를 담아두는 파일
   },
 
   projects: [
