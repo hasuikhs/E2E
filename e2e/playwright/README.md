@@ -35,6 +35,23 @@ $ npx playwright codegen localhost:3000
 
 ## 3. 테스트
 
+### 3.0 테스트 실행
+
+- 특정 테스트만 실행
+  - `test.only`를 사용하면 해당 테스트만 실행 가능
+  ```javascript
+  test.only('Test', async ({ page }) => {
+    // 테스트
+  });
+  ```
+  - 커맨드로 실행하기
+  ```bash
+  # 특정 테스트의 파일을 실행하기
+  $ npx playwright test <테스트 파일 경로>
+
+  # 테스트 케이스의 이름으로 실행하기
+  $ npx playwright test -t "테스트 케이스 이름"
+  ```
 ### 3.1 로그인 유지
 
 - 해당 작업을 하고나면 테스트 전에 로그인을 미리 해두어 각 테스트에 로그인이 필요하지 않음
