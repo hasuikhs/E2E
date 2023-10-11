@@ -1,4 +1,5 @@
 import { chromium, FullConfig } from '@playwright/test';
+import LoginPage from './common/auth/LoginPage';
 
 async function globalSetup(config: FullConfig) {
   const { baseURL, storageState } = config.projects[0].use;
@@ -7,7 +8,8 @@ async function globalSetup(config: FullConfig) {
   const context = await browser.newContext({ ignoreHTTPSErrors: true });
   const page = await context.newPage();
 
-  // 로그인 로직
+  const loginPage = new LoginPage(page, baseURL);
+  await loginPage.login();
 
   await page.context().storageState({ path: storageState as string });
   await browser.close();
