@@ -50,7 +50,7 @@ $ npx playwright codegen localhost:3000
   $ npx playwright test <테스트 파일 경로>
 
   # 테스트 케이스의 이름으로 실행하기
-  $ npx playwright test -t "테스트 케이스 이름"
+  $ npx playwright test -g "테스트 케이스 이름"
   ```
 ### 3.1 로그인 유지
 
