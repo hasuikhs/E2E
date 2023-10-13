@@ -1,6 +1,7 @@
 # Playwright
 
 - Node.js 16+
+- 각종 CI/CD에 적용 가능
 
 ## 1. 설치
 
@@ -11,7 +12,6 @@ $ npm init playwright@latest
 # yarn
 $ yarn create playwright
 ```
-
 
 ## 2. codegen
 
