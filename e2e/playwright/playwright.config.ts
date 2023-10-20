@@ -1,6 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
+import dotenv from 'dotenv';
 
-require('dotenv').config();
+dotenv.config();
 
 export default defineConfig({
   globalSetup: require.resolve('./global-setup'), // 모든 테스트 진행 전에 한번만 실행
@@ -18,8 +19,8 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
   reporter: [
-    ['list'],
-    ['html']
+    [ 'list' ],
+    [ 'html' ]
   ],
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
@@ -29,9 +30,7 @@ export default defineConfig({
     trace: 'on-first-retry',
     video: 'on-first-retry',
     viewport: { width: 1280, height: 720 },
-    contextOptions: {
-      ignoreHTTPSErrors: true
-    },
+    ignoreHTTPSErrors: true,
     storageState: './.global-auth.json' // 로그인 정보를 담아두는 파일
   },
 
