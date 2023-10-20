@@ -39,12 +39,15 @@ $ npx playwright codegen localhost:3000
 
 - 특정 테스트만 실행
   - `test.only`를 사용하면 해당 테스트만 실행 가능
+
   ```javascript
   test.only('Test', async ({ page }) => {
     // 테스트
   });
   ```
+
   - 커맨드로 실행하기
+
   ```bash
   # 특정 테스트의 파일을 실행하기
   $ npx playwright test <테스트 파일 경로>
@@ -52,6 +55,7 @@ $ npx playwright codegen localhost:3000
   # 테스트 케이스의 이름으로 실행하기
   $ npx playwright test -g "테스트 케이스 이름"
   ```
+
 ### 3.1 로그인 유지
 
 - 해당 작업을 하고나면 테스트 전에 로그인을 미리 해두어 각 테스트에 로그인이 필요하지 않음
@@ -95,6 +99,7 @@ $ npx playwright codegen localhost:3000
     - 위에 먼저 기술한 `gloabl-setup`의 경우에는 전역 설정 파일을 사용하게 되어 프로젝트 전체에 영향을 미침
     - 하지만, 아래와 같이 설정하면 추가적인 아이디나 패스워드를 이용한 테스트를 진행 가능
     - `globalSetup`에서 사용하고 set한 state는 사용하지 않고 개발 테스트에서 use를 통해 state를 따로 set해서 사용하는 것이므로, `globalSetup`에서 만든 파일 대신 사용
+
       ```javascript
       // playwright.config.ts
       export default defineConfig({
@@ -115,8 +120,10 @@ $ npx playwright codegen localhost:3000
       ```
 
 ### 3.2 선택자
+
 - 선택자를 이용하여 요소를 선택하면, 다양한 상호작용이 가능한 함수를 사용 가능
   - `click()`, `type()`, `fill()`, `press()`, `check()`, `selectOption()`, `hover()` 등
+
 #### 2.2.1 locator
 
 - 웹 페이지에서 요소를 찾고 상호작용하기 위함
@@ -124,18 +131,21 @@ $ npx playwright codegen localhost:3000
 
 - `page.locator(selector)`
   - 페이지에서 요소 찾기
+
   ```javascript
   const element = await page.locator('button.my-button');
   ```
 
 - `element.locator(selector)`
   - 요소 내에서 하위 요소 찾기
+
   ```javascript
   const button = await element.locator('button');
   ```
 
 - `element.locatorAll(selector)`
   - 요소 내에서 하위 요소 중 여러 개의 요소 모두 찾기
+
   ```javascript
   const buttons = await element.locatorAll('button');
   ```
